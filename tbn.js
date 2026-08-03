@@ -113,14 +113,15 @@
   document.getElementById('donateSubmit').addEventListener('click', () => {
     showToast('Thank you! Your generosity means the world to us.');
   });
-  ['volunteerForm','partnerForm','contactForm'].forEach(id => {
+  ['volunteerForm','partnerForm','contactForm','newsletterForm'].forEach(id => {
     const form = document.getElementById(id);
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const messages = {
         volunteerForm: "Application received — we'll be in touch soon!",
         partnerForm: "Thanks for reaching out — our team will contact you shortly.",
-        contactForm: "Message sent — we'll reply within 48 hours."
+        contactForm: "Message sent — we'll reply within 48 hours.",
+        newsletterForm: "Subscribed! Welcome to the TBN community."
       };
       showToast(messages[id]);
       form.reset();
