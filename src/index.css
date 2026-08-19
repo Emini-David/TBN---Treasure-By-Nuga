@@ -1,0 +1,303 @@
+/* ==========================================================================
+   TBN WEBSITE - DESIGN SYSTEM & STYLES (MODERN MINIMALIST)
+   ========================================================================== */
+
+:root {
+  /* Color Palette - Logo-derived & Elevated */
+  --color-forest: #0D4B31;
+  --color-forest-light: #156C48;
+  --color-forest-dark: #083321;
+  --color-forest-pale: #EDF5F0;
+  
+  --color-gold: #D9A94A;
+  --color-gold-hover: #C59639;
+  --color-gold-deep: #9C6A12;
+  --color-gold-pale: #FFF9EC;
+
+  --color-leaf: #3FAE22;
+  
+  --color-canvas: #FAF8F5;
+  --color-surface: #FFFFFF;
+  --color-surface-translucent: rgba(255, 255, 255, 0.85);
+  --color-surface-dark: #092619;
+  
+  --color-ink: #0F1713;
+  --color-ink-muted: #52635A;
+  --color-ink-light: #809287;
+
+  --color-border: #E5E0D5;
+  --color-border-subtle: #F0EDE6;
+  --color-border-dark: rgba(255, 255, 255, 0.14);
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Crimson Pro', Georgia, serif;
+
+  /* UI Tokens */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 36px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 2px 8px rgba(13, 75, 49, 0.04);
+  --shadow-md: 0 8px 24px rgba(13, 75, 49, 0.08);
+  --shadow-lg: 0 20px 40px rgba(13, 75, 49, 0.12);
+  --shadow-xl: 0 30px 60px rgba(13, 75, 49, 0.18);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Background Subtle Canvas Pattern */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 10% 10%, rgba(217, 169, 74, 0.05), transparent 40%),
+    radial-gradient(circle at 90% 90%, rgba(13, 75, 49, 0.04), transparent 45%);
+  pointer-events: none;
+  z-index: -2;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(rgba(13, 75, 49, 0.03) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-forest-dark);
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-forest);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* Common Layout Wrapper */
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 40px;
+  }
+}
+
+.section-padding {
+  padding: 96px 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 64px 0;
+  }
+}
+
+/* Eyebrow Label */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-gold-deep);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 18px;
+  height: 2px;
+  background: var(--color-gold-deep);
+  border-radius: 1px;
+}
+
+.eyebrow-dark {
+  color: var(--color-gold);
+}
+
+.eyebrow-dark::before {
+  background: var(--color-gold);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.925rem;
+  padding: 14px 28px;
+  border-radius: var(--radius-full);
+  transition: all 0.3s var(--ease-out);
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--color-gold);
+  color: var(--color-forest-dark);
+  box-shadow: 0 4px 20px rgba(217, 169, 74, 0.35);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(217, 169, 74, 0.45);
+}
+
+.btn-forest {
+  background-color: var(--color-forest);
+  color: var(--color-surface);
+  box-shadow: 0 4px 20px rgba(13, 75, 49, 0.25);
+}
+
+.btn-forest:hover {
+  background-color: var(--color-forest-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(13, 75, 49, 0.35);
+}
+
+.btn-outline {
+  border: 1.5px solid var(--color-forest);
+  color: var(--color-forest);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background-color: var(--color-forest);
+  color: var(--color-surface);
+  transform: translateY(-2px);
+}
+
+.btn-outline-light {
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: var(--color-surface);
+  background: transparent;
+}
+
+.btn-outline-light:hover {
+  border-color: var(--color-surface);
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Glassmorphism Surface */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-border);
+}
+
+/* Card Styling */
+.card-modern {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+}
+
+.card-modern:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Section Header */
+.section-header {
+  max-width: 680px;
+  margin-bottom: 56px;
+}
+
+.section-header h2 {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  margin-top: 12px;
+}
+
+.section-header p {
+  color: var(--color-ink-muted);
+  font-size: 1.075rem;
+  margin-top: 16px;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-canvas);
+}
+::-webkit-scrollbar-thumb {
+  background: #C4BDAC;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-forest);
+}
