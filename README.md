@@ -1,10 +1,10 @@
-TBN Website
+**TBN Website**
  
-About The Project
+**About The Project**
 TBN (Treasures By Nuga) is a modern, responsive website designed to showcase the organization's mission, activities, projects, and impact.
 The website provides visitors with an engaging and easy-to-navigate platform where they can learn more about TBN, explore its initiatives, and connect with the organization.
 
-Features
+**Features**
 1. Responsive and mobile-friendly design
 2. Modern and clean user interface
 3. Smooth navigation between sections
@@ -15,7 +15,7 @@ Features
 8. Accessible and easy-to-use navigation
 9. Dynamic content rendering with React
 
-Technologies Used
+**Technologies Used**
 1. React.js – Building the user interface and reusable components
 2. JavaScript (ES6+) – Application logic and interactivity
 3. HTML5 / JSX– Structuring and rendering webpage content
@@ -23,7 +23,7 @@ Technologies Used
 5. Git & GitHub – Version control and project management
 6. VS Code – Development environment
 
-Project Structure
+**Project Structure**
 ```text
 TBN-Website/
 │
@@ -45,10 +45,10 @@ TBN-Website/
 └── README.md
 ```
 
-Project Purpose
+**Project Purpose**
 The goal of this project is to create a professional digital presence for **TBN (Treasures By Nuga)**, making it easier for visitors to understand the organization's work, discover its projects, learn about its mission, and connect with the organization.
 
-Getting Started
+**Getting Started**
 To run this project locally, follow these steps:
 
 1. Clone the repository
@@ -84,7 +84,7 @@ The website is designed to provide a smooth experience across different devices,
 📱 Mobile phones
 📟 Tablets
 
-Future Improvements
+**Future Improvements**
 Some planned improvements include:
 * Backend integration
 * Functional contact form
@@ -95,11 +95,9 @@ Some planned improvements include:
 * SEO optimization
 * Deployment and custom domain integration
 
-Developer
-Designed and developed by David Ayodele.
+**Developer**
+Designed and developed by **David Ayodele.**
 Frontend Developer | UI/UX Designer | Graphic Designer
 
-📄 License
-This project was created for **TBN (Treasures By Nuga)**. All rights reserved.
-
-⭐ If you like this project, consider giving the repository a **star** on GitHub.
+📄 **License**
+This project was created for **TBN (Treasures By Nuga).** All rights reserved.
