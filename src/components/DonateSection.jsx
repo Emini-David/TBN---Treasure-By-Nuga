@@ -25,11 +25,10 @@ export default function DonateSection({ onDonateSubmit }) {
     <section id="donate" className="section-padding">
       <div className="container">
         <div
+          className="banner-card"
           style={{
             backgroundColor: 'var(--color-forest)',
             color: 'var(--color-surface)',
-            borderRadius: 'var(--radius-xl)',
-            padding: '64px 48px',
             position: 'relative',
             overflow: 'hidden',
             boxShadow: 'var(--shadow-xl)',
@@ -52,24 +51,24 @@ export default function DonateSection({ onDonateSubmit }) {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: '56px',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+              gap: '40px',
               alignItems: 'start',
               position: 'relative',
               zIndex: 1,
             }}
           >
             {/* Left Column Information */}
-            <div>
+            <div style={{ width: '100%' }}>
               <span className="eyebrow eyebrow-dark">Support Our Cause</span>
-              <h2 style={{ color: 'var(--color-surface)', fontSize: 'clamp(2rem, 3.5vw, 2.75rem)', margin: '16px 0 20px' }}>
+              <h2 style={{ color: 'var(--color-surface)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', margin: '16px 0 20px' }}>
                 Your generosity reaches further than you think
               </h2>
-              <p style={{ color: 'rgba(255, 255, 255, 0.78)', fontSize: '1.05rem', lineHeight: 1.6, marginBottom: '32px' }}>
+              <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '1rem', lineHeight: 1.6, marginBottom: '28px' }}>
                 Every donation directly funds our grassroots outreaches across Nigeria, ensuring families receive emergency supplies, children get learning kits, and youth acquire valuable skills.
               </p>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 {[
                   'Educational materials & scholarships for underprivileged kids',
                   'Free medical screenings & maternal healthcare kits',
@@ -77,11 +76,11 @@ export default function DonateSection({ onDonateSubmit }) {
                   'Youth entrepreneurship & vocational skill training',
                   'Community sanitation & infrastructure repair',
                 ].map((item, idx) => (
-                  <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.95rem' }}>
+                  <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', fontSize: '0.9rem' }}>
                     <div
                       style={{
-                        width: '24px',
-                        height: '24px',
+                        width: '22px',
+                        height: '22px',
                         borderRadius: '50%',
                         backgroundColor: 'var(--color-gold)',
                         color: 'var(--color-forest-dark)',
@@ -89,11 +88,12 @@ export default function DonateSection({ onDonateSubmit }) {
                         alignItems: 'center',
                         justifyContent: 'center',
                         flexShrink: 0,
+                        marginTop: '2px',
                       }}
                     >
-                      <Check size={14} strokeWidth={3} />
+                      <Check size={13} strokeWidth={3} />
                     </div>
-                    <span>{item}</span>
+                    <span style={{ lineHeight: 1.4 }}>{item}</span>
                   </div>
                 ))}
               </div>
@@ -101,12 +101,13 @@ export default function DonateSection({ onDonateSubmit }) {
 
             {/* Right Column Interactive Donation Card */}
             <div
+              className="inner-card"
               style={{
                 backgroundColor: 'var(--color-surface)',
                 color: 'var(--color-ink)',
-                borderRadius: 'var(--radius-lg)',
-                padding: '36px',
                 boxShadow: 'var(--shadow-lg)',
+                width: '100%',
+                boxSizing: 'border-box',
               }}
             >
               <form onSubmit={handleSubmit}>
@@ -118,7 +119,7 @@ export default function DonateSection({ onDonateSubmit }) {
                     border: '1px solid var(--color-border)',
                     borderRadius: 'var(--radius-full)',
                     padding: '4px',
-                    marginBottom: '24px',
+                    marginBottom: '20px',
                   }}
                 >
                   <button
@@ -126,10 +127,10 @@ export default function DonateSection({ onDonateSubmit }) {
                     onClick={() => setFrequency('once')}
                     style={{
                       flex: 1,
-                      padding: '10px 0',
+                      padding: '8px 0',
                       borderRadius: 'var(--radius-full)',
                       fontWeight: 700,
-                      fontSize: '0.85rem',
+                      fontSize: '0.825rem',
                       backgroundColor: frequency === 'once' ? 'var(--color-forest)' : 'transparent',
                       color: frequency === 'once' ? 'var(--color-surface)' : 'var(--color-ink-muted)',
                       transition: 'all 0.25s ease',
@@ -142,10 +143,10 @@ export default function DonateSection({ onDonateSubmit }) {
                     onClick={() => setFrequency('monthly')}
                     style={{
                       flex: 1,
-                      padding: '10px 0',
+                      padding: '8px 0',
                       borderRadius: 'var(--radius-full)',
                       fontWeight: 700,
-                      fontSize: '0.85rem',
+                      fontSize: '0.825rem',
                       backgroundColor: frequency === 'monthly' ? 'var(--color-forest)' : 'transparent',
                       color: frequency === 'monthly' ? 'var(--color-surface)' : 'var(--color-ink-muted)',
                       transition: 'all 0.25s ease',
@@ -156,15 +157,15 @@ export default function DonateSection({ onDonateSubmit }) {
                 </div>
 
                 {/* Amount Selection Buttons */}
-                <label style={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--color-forest)', display: 'block', marginBottom: '8px' }}>
+                <label style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--color-forest)', display: 'block', marginBottom: '8px' }}>
                   Select Amount (₦)
                 </label>
                 <div
                   style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: '10px',
-                    marginBottom: '16px',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))',
+                    gap: '8px',
+                    marginBottom: '14px',
                   }}
                 >
                   {amounts.map((amt) => (
@@ -176,12 +177,12 @@ export default function DonateSection({ onDonateSubmit }) {
                         setCustomAmount('');
                       }}
                       style={{
-                        padding: '12px 0',
+                        padding: '10px 0',
                         borderRadius: 'var(--radius-md)',
                         border: selectedAmount === amt && !customAmount ? '2px solid var(--color-forest)' : '1.5px solid var(--color-border)',
                         backgroundColor: selectedAmount === amt && !customAmount ? 'var(--color-forest-pale)' : 'var(--color-canvas)',
                         fontWeight: 700,
-                        fontSize: '0.95rem',
+                        fontSize: '0.9rem',
                         color: 'var(--color-forest)',
                         transition: 'all 0.2s ease',
                       }}
@@ -192,7 +193,7 @@ export default function DonateSection({ onDonateSubmit }) {
                 </div>
 
                 {/* Custom Amount Input */}
-                <div style={{ marginBottom: '16px' }}>
+                <div style={{ marginBottom: '14px' }}>
                   <input
                     type="number"
                     placeholder="Custom amount (₦)"
@@ -200,18 +201,19 @@ export default function DonateSection({ onDonateSubmit }) {
                     onChange={(e) => setCustomAmount(e.target.value)}
                     style={{
                       width: '100%',
-                      padding: '12px 16px',
+                      padding: '10px 14px',
                       borderRadius: 'var(--radius-md)',
                       border: '1.5px solid var(--color-border)',
                       backgroundColor: 'var(--color-canvas)',
-                      fontSize: '0.925rem',
+                      fontSize: '0.875rem',
                       outline: 'none',
+                      boxSizing: 'border-box',
                     }}
                   />
                 </div>
 
                 {/* Name & Email Fields */}
-                <div style={{ marginBottom: '14px' }}>
+                <div style={{ marginBottom: '12px' }}>
                   <input
                     type="text"
                     required
@@ -220,17 +222,18 @@ export default function DonateSection({ onDonateSubmit }) {
                     onChange={(e) => setDonorName(e.target.value)}
                     style={{
                       width: '100%',
-                      padding: '12px 16px',
+                      padding: '10px 14px',
                       borderRadius: 'var(--radius-md)',
                       border: '1.5px solid var(--color-border)',
                       backgroundColor: 'var(--color-canvas)',
-                      fontSize: '0.925rem',
+                      fontSize: '0.875rem',
                       outline: 'none',
+                      boxSizing: 'border-box',
                     }}
                   />
                 </div>
 
-                <div style={{ marginBottom: '24px' }}>
+                <div style={{ marginBottom: '20px' }}>
                   <input
                     type="email"
                     required
@@ -239,12 +242,13 @@ export default function DonateSection({ onDonateSubmit }) {
                     onChange={(e) => setDonorEmail(e.target.value)}
                     style={{
                       width: '100%',
-                      padding: '12px 16px',
+                      padding: '10px 14px',
                       borderRadius: 'var(--radius-md)',
                       border: '1.5px solid var(--color-border)',
                       backgroundColor: 'var(--color-canvas)',
-                      fontSize: '0.925rem',
+                      fontSize: '0.875rem',
                       outline: 'none',
+                      boxSizing: 'border-box',
                     }}
                   />
                 </div>
@@ -253,10 +257,10 @@ export default function DonateSection({ onDonateSubmit }) {
                 <button
                   type="submit"
                   className="btn btn-primary"
-                  style={{ width: '100%', padding: '16px', fontSize: '1rem', justifyContent: 'center' }}
+                  style={{ width: '100%', padding: '14px', fontSize: '0.925rem', justifyContent: 'center', whiteSpace: 'normal' }}
                 >
-                  <Heart size={18} style={{ fill: 'currentColor' }} />
-                  Donate ₦{customAmount ? Number(customAmount).toLocaleString() : selectedAmount} Now
+                  <Heart size={16} style={{ fill: 'currentColor', flexShrink: 0 }} />
+                  <span>Donate ₦{customAmount ? Number(customAmount).toLocaleString() : selectedAmount} Now</span>
                 </button>
 
                 <div
@@ -267,11 +271,12 @@ export default function DonateSection({ onDonateSubmit }) {
                     gap: '6px',
                     fontSize: '0.75rem',
                     color: 'var(--color-ink-muted)',
-                    marginTop: '16px',
+                    marginTop: '14px',
+                    textAlign: 'center',
                   }}
                 >
-                  <Lock size={13} />
-                  Secure checkout simulation — direct impact allocation
+                  <Lock size={12} style={{ flexShrink: 0 }} />
+                  <span>Secure checkout simulation — direct impact</span>
                 </div>
               </form>
             </div>

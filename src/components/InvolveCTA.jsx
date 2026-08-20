@@ -6,14 +6,13 @@ export default function InvolveCTA() {
     <section className="section-padding" style={{ paddingTop: '32px', paddingBottom: '64px' }}>
       <div className="container">
         <div
+          className="banner-card"
           style={{
             backgroundColor: 'var(--color-gold-pale)',
             border: '1px solid var(--color-border)',
-            borderRadius: 'var(--radius-xl)',
-            padding: '56px 48px',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '40px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+            gap: '32px',
             alignItems: 'center',
             boxShadow: 'var(--shadow-md)',
           }}
@@ -28,14 +27,14 @@ export default function InvolveCTA() {
             </p>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', width: '100%' }}>
             <a
               href="#volunteer"
               style={{
                 backgroundColor: 'var(--color-surface)',
                 border: '1px solid var(--color-border)',
                 borderRadius: 'var(--radius-md)',
-                padding: '18px 24px',
+                padding: '16px 20px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
@@ -44,11 +43,13 @@ export default function InvolveCTA() {
                 color: 'var(--color-forest)',
                 boxShadow: 'var(--shadow-sm)',
                 transition: 'all 0.3s ease',
+                width: '100%',
+                boxSizing: 'border-box',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--color-forest)';
                 e.currentTarget.style.color = 'var(--color-surface)';
-                e.currentTarget.style.transform = 'translateX(6px)';
+                e.currentTarget.style.transform = 'translateX(4px)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--color-surface)';
@@ -57,10 +58,10 @@ export default function InvolveCTA() {
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <UserPlus size={20} />
-                Volunteer with us
+                <UserPlus size={20} style={{ flexShrink: 0 }} />
+                <span>Volunteer with us</span>
               </div>
-              <ArrowRight size={18} />
+              <ArrowRight size={18} style={{ flexShrink: 0 }} />
             </a>
 
             <a
@@ -69,7 +70,7 @@ export default function InvolveCTA() {
                 backgroundColor: 'var(--color-surface)',
                 border: '1px solid var(--color-border)',
                 borderRadius: 'var(--radius-md)',
-                padding: '18px 24px',
+                padding: '16px 20px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
@@ -78,11 +79,13 @@ export default function InvolveCTA() {
                 color: 'var(--color-forest)',
                 boxShadow: 'var(--shadow-sm)',
                 transition: 'all 0.3s ease',
+                width: '100%',
+                boxSizing: 'border-box',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--color-forest)';
                 e.currentTarget.style.color = 'var(--color-surface)';
-                e.currentTarget.style.transform = 'translateX(6px)';
+                e.currentTarget.style.transform = 'translateX(4px)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--color-surface)';
@@ -91,10 +94,10 @@ export default function InvolveCTA() {
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <Heart size={20} />
-                Make a donation
+                <Heart size={20} style={{ flexShrink: 0 }} />
+                <span>Make a donation</span>
               </div>
-              <ArrowRight size={18} />
+              <ArrowRight size={18} style={{ flexShrink: 0 }} />
             </a>
 
             <a
@@ -103,7 +106,7 @@ export default function InvolveCTA() {
                 backgroundColor: 'var(--color-surface)',
                 border: '1px solid var(--color-border)',
                 borderRadius: 'var(--radius-md)',
-                padding: '18px 24px',
+                padding: '16px 20px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
@@ -112,11 +115,13 @@ export default function InvolveCTA() {
                 color: 'var(--color-forest)',
                 boxShadow: 'var(--shadow-sm)',
                 transition: 'all 0.3s ease',
+                width: '100%',
+                boxSizing: 'border-box',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--color-forest)';
                 e.currentTarget.style.color = 'var(--color-surface)';
-                e.currentTarget.style.transform = 'translateX(6px)';
+                e.currentTarget.style.transform = 'translateX(4px)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--color-surface)';
@@ -125,10 +130,10 @@ export default function InvolveCTA() {
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <Handshake size={20} />
-                Partner with TBN
+                <Handshake size={20} style={{ flexShrink: 0 }} />
+                <span>Partner with TBN</span>
               </div>
-              <ArrowRight size={18} />
+              <ArrowRight size={18} style={{ flexShrink: 0 }} />
             </a>
           </div>
         </div>
