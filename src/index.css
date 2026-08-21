@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    TBN WEBSITE - DESIGN SYSTEM & STYLES (MODERN MINIMALIST)
    ========================================================================== */
 
@@ -180,21 +180,11 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-gold-deep);
 }
 
-.eyebrow::before {
-  content: '';
-  width: 18px;
-  height: 2px;
-  background: var(--color-gold-deep);
-  border-radius: 1px;
-}
 
 .eyebrow-dark {
   color: var(--color-gold);
 }
 
-.eyebrow-dark::before {
-  background: var(--color-gold);
-}
 
 /* Buttons */
 .btn {
@@ -339,3 +329,23 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-forest);
 }
+
+/* Journey Gallery */
+.journey-gallery { background: linear-gradient(180deg, transparent, rgba(237, 245, 240, .72), transparent); }
+.gallery-intro { display: flex; justify-content: space-between; gap: 36px; align-items: flex-end; }.gallery-intro-mark { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; max-width: 450px; padding: 16px 0 20px; color: var(--color-ink-muted); font-size: .77rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }.gallery-intro-mark i { width: 14px; height: 1px; background: var(--color-gold); }.gallery-intro-mark strong { color: var(--color-forest); }
+.gallery-filters { display: flex; gap: 10px; overflow-x: auto; padding: 2px 0 22px; margin-bottom: 12px; scrollbar-width: none; }.gallery-filters::-webkit-scrollbar { display: none; }.gallery-filters button { flex: 0 0 auto; padding: 9px 16px; color: var(--color-ink-muted); border: 1px solid var(--color-border); background: rgba(255,255,255,.7); border-radius: var(--radius-full); font-size: .8rem; font-weight: 700; transition: .25s var(--ease-out); }.gallery-filters button:hover, .gallery-filters button.is-active { background: var(--color-forest); color: white; border-color: var(--color-forest); }
+.gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }.gallery-card { position: relative; overflow: hidden; padding: 0; border-radius: var(--radius-md); text-align: left; color: white; box-shadow: var(--shadow-sm); opacity: 0; transform: translateY(22px); transition: opacity .55s var(--ease-out) var(--delay), transform .55s var(--ease-out) var(--delay), box-shadow .3s var(--ease-out); }.gallery-grid.is-visible .gallery-card { opacity: 1; transform: translateY(0); }.gallery-card { aspect-ratio: 1.18; }.gallery-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .65s var(--ease-out); }.gallery-card:hover { box-shadow: var(--shadow-lg); }.gallery-card:hover img { transform: scale(1.075); }.gallery-card-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,27,17,.02) 25%, rgba(6,35,22,.85)); }.gallery-card-content { position: absolute; inset: auto 0 0; display: grid; gap: 5px; padding: 18px; }.gallery-album { display: inline-flex; align-items: center; gap: 6px; width: fit-content; color: rgba(255,255,255,.88); font-size: .69rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }.gallery-card-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; }.gallery-card-meta { font-size: .75rem; color: rgba(255,255,255,.8); }
+.gallery-cta { margin-top: 48px; padding: 30px 34px; display: flex; align-items: center; justify-content: space-between; gap: 28px; border-radius: var(--radius-lg); background: var(--color-surface); border: 1px solid var(--color-border); box-shadow: var(--shadow-md); }.gallery-cta h3 { max-width: 560px; font-size: clamp(1.3rem,2.2vw,1.7rem); margin-top: 8px; }
+.gallery-lightbox { position: fixed; z-index: 3000; inset: 0; display: grid; place-items: center; padding: 24px; background: rgba(4,23,14,.8); backdrop-filter: blur(12px); }.lightbox-panel { position: relative; width: min(980px,100%); overflow: hidden; display: grid; grid-template-columns: 1.2fr .8fr; border-radius: var(--radius-lg); background: white; box-shadow: var(--shadow-xl); }.lightbox-image { min-height: 460px; background: var(--color-surface-dark); }.lightbox-image img { width: 100%; height: 100%; object-fit: cover; }.lightbox-details { padding: 52px 34px 32px; display: flex; flex-direction: column; align-items: flex-start; }.gallery-album-dark { color: var(--color-gold-deep); }.lightbox-details h3 { font-size: 1.8rem; margin: 15px 0; }.lightbox-details p { color: var(--color-ink-muted); }.lightbox-meta { display: grid; gap: 10px; margin-top: auto; padding-top: 28px; color: var(--color-forest); font-size: .83rem; font-weight: 700; }.lightbox-meta span { display: flex; align-items: center; gap: 8px; }.lightbox-meta svg { color: var(--color-gold-deep); }.lightbox-close,.lightbox-nav { position: absolute; z-index: 1; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; color: var(--color-forest); background: rgba(255,255,255,.94); box-shadow: var(--shadow-md); }.lightbox-close { top: 14px; right: 14px; }.lightbox-nav { top: calc(50% - 21px); }.lightbox-prev { left: 14px; }.lightbox-next { right: 14px; }
+@media (max-width: 800px) { .gallery-intro { display: block; }.gallery-intro-mark { padding-top: 0; margin: -30px 0 30px; }.gallery-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }.lightbox-panel { grid-template-columns: 1fr; max-height: calc(100vh - 48px); overflow-y: auto; }.lightbox-image { min-height: 300px; height: 42vh; }.lightbox-details { padding: 28px; min-height: 260px; }.lightbox-meta { margin-top: 20px; }.gallery-cta { align-items: flex-start; flex-direction: column; } }
+@media (max-width: 480px) { .gallery-grid { gap: 10px; }.gallery-card { aspect-ratio: 1; }.gallery-card-content { padding: 13px; }.gallery-card-title { font-size: .95rem; }.gallery-album,.gallery-card-meta { font-size: .63rem; }.gallery-cta { padding: 24px; }.lightbox-nav { top: 210px; }.lightbox-details h3 { font-size: 1.5rem; } }
+@media (prefers-reduced-motion: reduce) { .gallery-card,.gallery-card img { transition: none; }.gallery-card { opacity: 1; transform: none; } }
+
+
+
+/* Hero emblem motion */
+.spinning-tbn-logo { animation: tbn-emblem-spin 14s linear infinite; }
+@keyframes tbn-emblem-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spinning-tbn-logo { animation: none; } }
+
+

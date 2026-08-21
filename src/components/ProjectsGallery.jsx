@@ -1,215 +1,51 @@
-import React, { useState } from 'react';
-import { Eye, Layers, Calendar, MapPin, X } from 'lucide-react';
+﻿import React, { useEffect, useMemo, useState } from 'react';
+import { ArrowRight, Calendar, ChevronLeft, ChevronRight, Images, MapPin, X } from 'lucide-react';
+
+const photo = '/TBN-PIX/about_img.jpg';
+const galleryItems = [
+  { id: 1, title: 'School Support Initiative', category: 'Outreach', album: 'Education in Action', date: '2024', location: 'Warri, Delta State', description: 'Making school essentials and encouragement accessible to young learners.', image: photo },
+  { id: 2, title: 'Back-to-School Campaign', category: 'Campaigns', album: 'Education in Action', date: '2024', location: 'Warri South', description: 'A joyful day of learning support, mentorship and new possibilities.', image: photo },
+  { id: 3, title: 'Free Medical Outreach', category: 'Outreach', album: 'Health & Hope', date: '2024', location: 'Lagos Community', description: 'Bringing essential checks, care and reassurance closer to families.', image: photo },
+  { id: 4, title: 'Community Clean-Up', category: 'Community', album: 'Cleaner Neighbourhoods', date: '2024', location: 'Urban Settlement', description: 'Neighbours and volunteers working side by side for healthier shared spaces.', image: photo },
+  { id: 5, title: 'Youth Leadership Summit', category: 'Workshops', album: 'Youth Leadership', date: '2024', location: 'National Outreach', description: 'Young people gathering to grow skills, confidence and civic purpose.', image: photo },
+  { id: 6, title: 'Food Relief Distribution', category: 'Projects', album: 'Food & Family Care', date: '2024', location: 'Grassroots Communities', description: 'Supporting vulnerable households with dignity, warmth and practical care.', image: photo },
+  { id: 7, title: 'Volunteer Field Day', category: 'Events', album: 'People of TBN', date: '2024', location: 'Delta State', description: 'The hands and hearts behind every TBN intervention.', image: photo },
+  { id: 8, title: 'Community Conversations', category: 'Community', album: 'People of TBN', date: '2024', location: 'Lagos', description: 'Listening first, then building lasting solutions together.', image: photo },
+];
+const filters = ['All', 'Events', 'Outreach', 'Projects', 'Community', 'Workshops', 'Campaigns'];
 
 export default function ProjectsGallery() {
-  const projects = [
-    {
-      id: 1,
-      title: 'School Support Initiative',
-      category: 'Education',
-      location: 'Delta State',
-      date: '2024',
-      description: 'Distributed 500+ textbook kits, school uniforms, and desk supplies to rural schools in Warri and environs.',
-      color: 'linear-gradient(135deg, #0D4B31 0%, #156C48 100%)',
-    },
-    {
-      id: 2,
-      title: 'Free Medical Outreach',
-      category: 'Healthcare',
-      location: 'Lagos Community',
-      date: '2024',
-      description: 'Provided free health screenings, hypertension checks, eye examinations, and essential prescriptions to over 400 families.',
-      color: 'linear-gradient(135deg, #9C6A12 0%, #D9A94A 100%)',
-    },
-    {
-      id: 3,
-      title: 'Back-to-School Campaign',
-      category: 'Education',
-      location: 'Warri South',
-      date: '2024',
-      description: 'Awarded full tuition scholarships and mentorship packages to bright underprivileged students entering secondary school.',
-      color: 'linear-gradient(135deg, #1B5E12 0%, #3FAE22 100%)',
-    },
-    {
-      id: 4,
-      title: 'Community Clean-Up & Sanitation',
-      category: 'Environment',
-      location: 'Urban Settlement',
-      date: '2024',
-      description: 'Organized neighborhood volunteer teams for drainage clearing, waste disposal education, and sanitation bin installation.',
-      color: 'linear-gradient(135deg, #12211A 0%, #4C5A52 100%)',
-    },
-    {
-      id: 5,
-      title: 'Youth Leadership Summit',
-      category: 'Empowerment',
-      location: 'National Outreach',
-      date: '2024',
-      description: 'Gathered 150+ young leaders for intensive bootcamps on digital skills, public speaking, civic responsibility, and ethics.',
-      color: 'linear-gradient(135deg, #082A1B 0%, #156C48 100%)',
-    },
-    {
-      id: 6,
-      title: 'Food Relief Distribution',
-      category: 'Emergency Relief',
-      location: 'Grassroots Communities',
-      date: '2024',
-      description: 'Delivered food parcels containing rice, beans, cooking oil, and nutritional supplements to vulnerable households.',
-      color: 'linear-gradient(135deg, #0D4B31 0%, #D9A94A 100%)',
-    },
-  ];
+  const [activeFilter, setActiveFilter] = useState('All');
+  const [activeItem, setActiveItem] = useState(null);
+  const [visible, setVisible] = useState(false);
+  const filteredItems = useMemo(() => activeFilter === 'All' ? galleryItems : galleryItems.filter((item) => item.category === activeFilter), [activeFilter]);
 
-  const [activeModalProject, setActiveModalProject] = useState(null);
+  useEffect(() => {
+    const gallery = document.querySelector('.journey-gallery');
+    if (!gallery) return undefined;
+    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), { threshold: 0.12 });
+    observer.observe(gallery);
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    if (!activeItem) return undefined;
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') setActiveItem(null);
+      if (event.key === 'ArrowRight') changeItem(1);
+      if (event.key === 'ArrowLeft') changeItem(-1);
+    };
+    document.addEventListener('keydown', onKeyDown); document.body.style.overflow = 'hidden';
+    return () => { document.removeEventListener('keydown', onKeyDown); document.body.style.overflow = ''; };
+  }, [activeItem]);
+  const changeItem = (direction) => {
+    const index = filteredItems.findIndex((item) => item.id === activeItem.id);
+    setActiveItem(filteredItems[(index + direction + filteredItems.length) % filteredItems.length]);
+  };
 
-  return (
-    <section id="gallery" className="section-padding">
-      <div className="container">
-        <div className="section-header">
-          <span className="eyebrow">Recent Projects</span>
-          <h2>Moments from the field</h2>
-          <p>A look at the key initiatives our volunteers and partners brought to life this year.</p>
-        </div>
-
-        {/* Project Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '24px',
-          }}
-        >
-          {projects.map((proj) => (
-            <div
-              key={proj.id}
-              onClick={() => setActiveModalProject(proj)}
-              style={{
-                borderRadius: 'var(--radius-lg)',
-                padding: '36px 28px',
-                background: proj.color,
-                color: 'var(--color-surface)',
-                cursor: 'pointer',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                minHeight: '220px',
-                boxShadow: 'var(--shadow-md)',
-                transition: 'all 0.3s ease',
-                position: 'relative',
-                overflow: 'hidden',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-6px)';
-                e.currentTarget.style.boxShadow = 'var(--shadow-xl)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'var(--shadow-md)';
-              }}
-            >
-              <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                  <span
-                    style={{
-                      fontSize: '0.75rem',
-                      fontWeight: 700,
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.12em',
-                      backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                      padding: '4px 12px',
-                      borderRadius: 'var(--radius-full)',
-                    }}
-                  >
-                    {proj.category}
-                  </span>
-                  <Eye size={18} opacity={0.8} />
-                </div>
-                <h3 style={{ color: 'var(--color-surface)', fontSize: '1.35rem' }}>
-                  {proj.title}
-                </h3>
-              </div>
-
-              <div style={{ display: 'flex', gap: '16px', fontSize: '0.8rem', opacity: 0.9, marginTop: '20px' }}>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <MapPin size={14} />
-                  {proj.location}
-                </span>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <Calendar size={14} />
-                  {proj.date}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Modal Viewer */}
-        {activeModalProject && (
-          <div
-            style={{
-              position: 'fixed',
-              inset: 0,
-              backgroundColor: 'rgba(13, 75, 49, 0.65)',
-              backdropFilter: 'blur(8px)',
-              zIndex: 2000,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '24px',
-            }}
-            onClick={() => setActiveModalProject(null)}
-          >
-            <div
-              style={{
-                backgroundColor: 'var(--color-surface)',
-                borderRadius: 'var(--radius-xl)',
-                maxWidth: '540px',
-                width: '100%',
-                padding: '40px',
-                position: 'relative',
-                boxShadow: 'var(--shadow-xl)',
-              }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setActiveModalProject(null)}
-                style={{
-                  position: 'absolute',
-                  top: '20px',
-                  right: '20px',
-                  padding: '8px',
-                  color: 'var(--color-ink-muted)',
-                  borderRadius: '50%',
-                }}
-              >
-                <X size={22} />
-              </button>
-
-              <span className="eyebrow" style={{ marginBottom: '12px' }}>
-                {activeModalProject.category}
-              </span>
-
-              <h3 style={{ fontSize: '1.6rem', color: 'var(--color-forest)', margin: '8px 0 16px' }}>
-                {activeModalProject.title}
-              </h3>
-
-              <p style={{ color: 'var(--color-ink-muted)', fontSize: '1rem', lineHeight: 1.6, marginBottom: '24px' }}>
-                {activeModalProject.description}
-              </p>
-
-              <div style={{ display: 'flex', gap: '20px', fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-forest)' }}>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <MapPin size={16} style={{ color: 'var(--color-gold-deep)' }} />
-                  {activeModalProject.location}
-                </span>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Calendar size={16} style={{ color: 'var(--color-gold-deep)' }} />
-                  {activeModalProject.date}
-                </span>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-    </section>
-  );
+  return <section id="gallery" className="journey-gallery section-padding"><div className="container">
+    <div className="gallery-intro"><div className="section-header"><span className="eyebrow">Our visual journal</span><h2>Our journey, in the moments that matter.</h2><p>These photographs capture TBN in motion: showing up, listening closely and working alongside communities to create meaningful impact.</p></div><div className="gallery-intro-mark"><span>Our journey</span><i /> <span>Our activities</span><i /> <span>Our people</span><i /> <strong>Our impact</strong></div></div>
+    <div className="gallery-filters" aria-label="Filter gallery items">{filters.map((filter) => <button key={filter} onClick={() => setActiveFilter(filter)} className={activeFilter === filter ? 'is-active' : ''} aria-pressed={activeFilter === filter}>{filter}</button>)}</div>
+    <div className={'gallery-grid ' + (visible ? 'is-visible' : '')}>{filteredItems.map((item, index) => <button className={'gallery-card gallery-card-' + ((index % 5) + 1)} key={item.id} onClick={() => setActiveItem(item)} style={{ '--delay': `${index * 70}ms` }}><img src={item.image} alt={`${item.title}, ${item.location}`} /><span className="gallery-card-shade" /><span className="gallery-card-content"><span className="gallery-album"><Images size={14} /> {item.album}</span><span className="gallery-card-title">{item.title}</span><span className="gallery-card-meta">{item.date} · {item.location}</span></span></button>)}</div>
+    <div className="gallery-cta"><div><span className="eyebrow">Be part of what comes next</span><h3>Every act of care becomes part of a bigger story.</h3></div><a className="btn btn-forest" href="#volunteer">Get involved with TBN <ArrowRight size={18} /></a></div>
+  </div>{activeItem && <div className="gallery-lightbox" role="dialog" aria-modal="true" aria-label={`${activeItem.title} details`} onClick={() => setActiveItem(null)}><div className="lightbox-panel" onClick={(event) => event.stopPropagation()}><button className="lightbox-close" onClick={() => setActiveItem(null)} aria-label="Close gallery viewer"><X size={22} /></button><div className="lightbox-image"><img src={activeItem.image} alt={`${activeItem.title}, ${activeItem.location}`} /></div><div className="lightbox-details"><span className="gallery-album gallery-album-dark"><Images size={14} /> {activeItem.album}</span><h3>{activeItem.title}</h3><p>{activeItem.description}</p><div className="lightbox-meta"><span><Calendar size={16} /> {activeItem.date}</span><span><MapPin size={16} /> {activeItem.location}</span></div></div><button className="lightbox-nav lightbox-prev" onClick={() => changeItem(-1)} aria-label="Previous photo"><ChevronLeft size={24} /></button><button className="lightbox-nav lightbox-next" onClick={() => changeItem(1)} aria-label="Next photo"><ChevronRight size={24} /></button></div></div>}</section>;
 }

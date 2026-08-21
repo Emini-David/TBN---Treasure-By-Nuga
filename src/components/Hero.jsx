@@ -1,5 +1,5 @@
-import React from 'react';
-import { Heart, Users, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
+﻿import React from 'react';
+import { Heart, Users, ArrowRight, ShieldCheck } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -25,8 +25,7 @@ export default function Hero() {
           {/* Text Left Column */}
           <div style={{ maxWidth: '600px' }}>
             <span className="eyebrow">
-              <Sparkles size={14} style={{ color: 'var(--color-gold-deep)' }} />
-              Empower · Inspire · Impact
+              Empower Â· Inspire Â· Impact
             </span>
 
             <h1
@@ -59,7 +58,7 @@ export default function Hero() {
                 lineHeight: 1.65,
               }}
             >
-              We bring hope to underserved communities through education, healthcare, youth empowerment and sustainable development — because every person deserves the opportunity to thrive.
+              We bring hope to underserved communities through education, healthcare, youth empowerment and sustainable development â€” because every person deserves the opportunity to thrive.
             </p>
 
             <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
@@ -189,6 +188,7 @@ export default function Hero() {
               <img
                 src="/TBN-PIX/TBN.png"
                 alt="TBN Emblem"
+                className="spinning-tbn-logo"
                 style={{ width: '100%', height: '100%', borderRadius: '50%' }}
               />
             </div>
@@ -198,3 +198,7 @@ export default function Hero() {
     </section>
   );
 }
+
+
+
+

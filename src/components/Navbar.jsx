@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Menu, X, Heart, ArrowUpRight } from 'lucide-react';
 
 export default function Navbar({ onDonateClick }) {
@@ -17,7 +17,7 @@ export default function Navbar({ onDonateClick }) {
     { name: 'About', href: '#about' },
     { name: 'Programs', href: '#programs' },
     { name: 'Impact', href: '#impact' },
-    { name: 'Projects', href: '#gallery' },
+    { name: 'Gallery', href: '#gallery' },
     { name: 'Volunteer', href: '#volunteer' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -178,3 +178,4 @@ export default function Navbar({ onDonateClick }) {
     </header>
   );
 }
+
