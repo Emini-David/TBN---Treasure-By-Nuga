@@ -25,7 +25,7 @@ export default function Hero() {
           {/* Text Left Column */}
           <div style={{ maxWidth: '600px' }}>
             <span className="eyebrow">
-              Empower Â· Inspire Â· Impact
+              Empower, Inspire, Impact
             </span>
 
             <h1
@@ -58,7 +58,7 @@ export default function Hero() {
                 lineHeight: 1.65,
               }}
             >
-              We bring hope to underserved communities through education, healthcare, youth empowerment and sustainable development â€” because every person deserves the opportunity to thrive.
+              We bring hope to underserved communities through education, healthcare, youth empowerment, and sustainable development because every person deserves the opportunity to thrive.
             </p>
 
             <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
