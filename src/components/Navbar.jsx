@@ -13,6 +13,13 @@ export default function Navbar({ onDonateClick }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!mobileMenuOpen) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = previousOverflow; };
+  }, [mobileMenuOpen]);
+
   const navLinks = [
     { name: 'About', href: '#about' },
     { name: 'Programs', href: '#programs' },
@@ -36,10 +43,10 @@ export default function Navbar({ onDonateClick }) {
         zIndex: 1000,
         transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
         padding: scrolled ? '12px 0' : '20px 0',
-        backgroundColor: scrolled ? 'rgba(250, 248, 245, 0.88)' : 'transparent',
+        backgroundColor: (scrolled || mobileMenuOpen) ? 'var(--color-canvas)' : 'transparent',
         backdropFilter: scrolled ? 'blur(16px) saturate(140%)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(16px) saturate(140%)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(13, 75, 49, 0.08)' : '1px solid transparent',
+        borderBottom: (scrolled || mobileMenuOpen) ? '1px solid rgba(13, 75, 49, 0.08)' : '1px solid transparent',
         boxShadow: scrolled ? '0 4px 20px rgba(13, 75, 49, 0.04)' : 'none',
       }}
     >
@@ -121,16 +128,17 @@ export default function Navbar({ onDonateClick }) {
           style={{
             position: 'fixed',
             inset: 0,
-            top: '70px',
-            backgroundColor: 'var(--color-canvas)',
+            top: '96px',
+            backgroundColor: '#FAF8F5',
             zIndex: 999,
             display: 'flex',
             flexDirection: 'column',
-            padding: '32px 24px',
+            padding: '28px 24px 36px',
             gap: '24px',
             borderTop: '1px solid var(--color-border)',
             boxShadow: 'var(--shadow-xl)',
             animation: 'fadeIn 0.3s ease',
+            overflowY: 'auto',
           }}
         >
           {navLinks.map((link) => (
@@ -178,4 +186,5 @@ export default function Navbar({ onDonateClick }) {
     </header>
   );
 }
+
 
